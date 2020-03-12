@@ -60,3 +60,21 @@ def ddpg(n_episodes=MAX_EP, max_t=MAX_EP_STEP, print_every=50):
             break            
             
     return scores
+
+
+if __name__=='__main__':
+    
+    scores = ddpg()
+
+    import matplotlib.pyplot as plt
+    import matplotlib
+    
+    matplotlib.use('TkAgg')
+    fig = plt.figure()
+    
+    ax = fig.add_subplot(111)
+    plt.plot(np.arange(1, len(scores)+1), scores)
+    plt.ylabel('Score')
+    plt.xlabel('Episode #')
+    plt.show()
+

@@ -46,3 +46,21 @@ class Memory:  # stored as ( s, a, r, s_ ) in SumTree
     def update(self, idx, error):
         p = self._get_priority(error)
         self.tree.update(idx, p)
+
+if __name__=='__main__':
+    memory = Memory(10)
+    memory.add(3,(1,1,1,1))
+    memory.add(2,(0,4,1,1))
+    memory.add(10,(1,3,4,2))
+
+    batch, idxs, is_weight = memory.sample(3)
+    print(batch)
+    print(idxs)
+    print(is_weight)
+
+    memory.update(idxs[0], 30)
+    
+    batch, idxs, is_weight = memory.sample(3)
+    print(batch)
+    print(idxs)
+    print(is_weight)
